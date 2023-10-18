@@ -1,3 +1,109 @@
-[gd_scene format=3 uid="uid://g5wpd4brrgh1"]
+[gd_scene load_steps=2 format=3 uid="uid://g5wpd4brrgh1"]
+
+[ext_resource type="Texture2D" uid="uid://cgtfmqof3pkc8" path="res://background.png" id="1_oy4gk"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(408, 600)
+scale = Vector2(0.852, 0.814667)
+texture = ExtResource("1_oy4gk")
+
+[node name="player up" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button5" type="Button" parent="player up"]
+offset_left = 320.0
+offset_top = 216.0
+offset_right = 512.0
+offset_bottom = 344.0
+
+[node name="Button6" type="Button" parent="player up"]
+offset_left = 64.0
+offset_top = 216.0
+offset_right = 256.0
+offset_bottom = 344.0
+
+[node name="Button4" type="Button" parent="player up"]
+offset_left = 576.0
+offset_top = 216.0
+offset_right = 768.0
+offset_bottom = 344.0
+
+[node name="Button3" type="Button" parent="player up"]
+offset_left = 320.0
+offset_top = 24.0
+offset_right = 512.0
+offset_bottom = 152.0
+
+[node name="Button2" type="Button" parent="player up"]
+offset_left = 64.0
+offset_top = 24.0
+offset_right = 256.0
+offset_bottom = 152.0
+
+[node name="Button" type="Button" parent="player up"]
+offset_left = 576.0
+offset_top = 24.0
+offset_right = 768.0
+offset_bottom = 152.0
+
+[node name="Lives" type="RichTextLabel" parent="player up"]
+offset_left = 256.0
+offset_top = 448.0
+offset_right = 360.0
+offset_bottom = 488.0
+rotation = -3.14159
+text = "Lives:"
+
+[node name="player down" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button8" type="Button" parent="player down"]
+offset_left = 320.0
+offset_top = 832.0
+offset_right = 512.0
+offset_bottom = 960.0
+
+[node name="Button9" type="Button" parent="player down"]
+offset_left = 64.0
+offset_top = 832.0
+offset_right = 256.0
+offset_bottom = 960.0
+
+[node name="Button12" type="Button" parent="player down"]
+offset_left = 320.0
+offset_top = 1024.0
+offset_right = 512.0
+offset_bottom = 1152.0
+
+[node name="Button11" type="Button" parent="player down"]
+offset_left = 64.0
+offset_top = 1024.0
+offset_right = 256.0
+offset_bottom = 1152.0
+
+[node name="Button10" type="Button" parent="player down"]
+offset_left = 576.0
+offset_top = 1024.0
+offset_right = 768.0
+offset_bottom = 1152.0
+
+[node name="Button7" type="Button" parent="player down"]
+offset_left = 576.0
+offset_top = 832.0
+offset_right = 768.0
+offset_bottom = 960.0
+
+[node name="Lives" type="RichTextLabel" parent="player down"]
+offset_left = 576.0
+offset_top = 776.0
+offset_right = 680.0
+offset_bottom = 816.0
+text = "Lives:"
