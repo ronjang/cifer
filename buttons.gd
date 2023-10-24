@@ -6,7 +6,7 @@ extends Node2D
 @onready var button4 = $Button4
 @onready var button5 = $Button5
 @onready var button6 = $Button6
-var ownButtons = get_parent().get("tappedButtons")
+@onready var ownButtons = get_node("..").get("tappedButtons")
 
 
 
@@ -34,3 +34,20 @@ func _on_button_5_pressed():
 
 func _on_button_6_pressed():
 	ownButtons.append(6)
+
+func activate():
+	button1.disabled = false
+	button2.disabled = false
+	button3.disabled = false
+	button4.disabled = false
+	button5.disabled = false
+	button6.disabled = false
+
+func deactivate():
+	button1.disabled = true
+	button2.disabled = true
+	button3.disabled = true
+	button4.disabled = true
+	button5.disabled = true
+	button6.disabled = true
+	
