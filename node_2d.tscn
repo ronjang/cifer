@@ -1,107 +1,109 @@
-[gd_scene load_steps=4 format=3 uid="uid://g5wpd4brrgh1"]
+[gd_scene load_steps=5 format=3 uid="uid://g5wpd4brrgh1"]
 
 [ext_resource type="Texture2D" uid="uid://cgtfmqof3pkc8" path="res://background.png" id="1_oy4gk"]
+[ext_resource type="Script" path="res://gamelogic.gd" id="1_pdeob"]
 [ext_resource type="Script" path="res://player.gd" id="2_i13g4"]
 [ext_resource type="Script" path="res://buttons.gd" id="3_4fday"]
 
-[node name="Node2D" type="Node2D"]
+[node name="World" type="Node2D"]
+script = ExtResource("1_pdeob")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(408, 600)
 scale = Vector2(0.852, 0.814667)
 texture = ExtResource("1_oy4gk")
 
-[node name="playerup" type="Node2D" parent="."]
+[node name="Playerup" type="Node2D" parent="."]
 script = ExtResource("2_i13g4")
 
-[node name="buttons" type="Node2D" parent="playerup"]
+[node name="Buttons" type="Node2D" parent="Playerup"]
 script = ExtResource("3_4fday")
 
-[node name="Button1" type="Button" parent="playerup/buttons"]
+[node name="Button1" type="Button" parent="Playerup/Buttons"]
 offset_left = 64.0
 offset_top = 24.0
 offset_right = 256.0
 offset_bottom = 152.0
 
-[node name="Button2" type="Button" parent="playerup/buttons"]
+[node name="Button2" type="Button" parent="Playerup/Buttons"]
 offset_left = 320.0
 offset_top = 24.0
 offset_right = 512.0
 offset_bottom = 152.0
 
-[node name="Button3" type="Button" parent="playerup/buttons"]
+[node name="Button3" type="Button" parent="Playerup/Buttons"]
 offset_left = 576.0
 offset_top = 24.0
 offset_right = 768.0
 offset_bottom = 152.0
 
-[node name="Button4" type="Button" parent="playerup/buttons"]
+[node name="Button4" type="Button" parent="Playerup/Buttons"]
 offset_left = 64.0
 offset_top = 216.0
 offset_right = 256.0
 offset_bottom = 344.0
 
-[node name="Button5" type="Button" parent="playerup/buttons"]
+[node name="Button5" type="Button" parent="Playerup/Buttons"]
 offset_left = 320.0
 offset_top = 216.0
 offset_right = 512.0
 offset_bottom = 344.0
 
-[node name="Button6" type="Button" parent="playerup/buttons"]
+[node name="Button6" type="Button" parent="Playerup/Buttons"]
 offset_left = 576.0
 offset_top = 216.0
 offset_right = 768.0
 offset_bottom = 344.0
 
-[node name="Lives" type="RichTextLabel" parent="playerup"]
+[node name="Score" type="RichTextLabel" parent="Playerup"]
 offset_left = 256.0
 offset_top = 448.0
 offset_right = 360.0
 offset_bottom = 488.0
 rotation = -3.14159
-text = "Lives:"
+text = "Score:"
 
-[node name="player down" type="Node2D" parent="."]
+[node name="Playerdown" type="Node2D" parent="."]
 
-[node name="buttons" type="Node2D" parent="player down"]
+[node name="buttons" type="Node2D" parent="Playerdown"]
 
-[node name="Button1" type="Button" parent="player down/buttons"]
+[node name="Button1" type="Button" parent="Playerdown/buttons"]
 offset_left = 64.0
 offset_top = 832.0
 offset_right = 256.0
 offset_bottom = 960.0
 
-[node name="Button2" type="Button" parent="player down/buttons"]
+[node name="Button2" type="Button" parent="Playerdown/buttons"]
 offset_left = 320.0
 offset_top = 832.0
 offset_right = 512.0
 offset_bottom = 960.0
 
-[node name="Button3" type="Button" parent="player down/buttons"]
+[node name="Button3" type="Button" parent="Playerdown/buttons"]
 offset_left = 576.0
 offset_top = 832.0
 offset_right = 768.0
 offset_bottom = 960.0
 
-[node name="Button5" type="Button" parent="player down/buttons"]
+[node name="Button5" type="Button" parent="Playerdown/buttons"]
 offset_left = 320.0
 offset_top = 1024.0
 offset_right = 512.0
 offset_bottom = 1152.0
 
-[node name="Button4" type="Button" parent="player down/buttons"]
+[node name="Button4" type="Button" parent="Playerdown/buttons"]
 offset_left = 64.0
 offset_top = 1024.0
 offset_right = 256.0
 offset_bottom = 1152.0
 
-[node name="Button6" type="Button" parent="player down/buttons"]
+[node name="Button6" type="Button" parent="Playerdown/buttons"]
 offset_left = 576.0
 offset_top = 1024.0
 offset_right = 768.0
 offset_bottom = 1152.0
 
-[node name="Lives" type="RichTextLabel" parent="player down"]
+[node name="Lives" type="RichTextLabel" parent="Playerdown"]
 offset_left = 576.0
 offset_top = 776.0
 offset_right = 680.0
@@ -110,9 +112,16 @@ text = "Lives:"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
-[connection signal="pressed" from="playerup/buttons/Button1" to="playerup/buttons" method="_on_button_1_pressed"]
-[connection signal="pressed" from="playerup/buttons/Button2" to="playerup/buttons" method="_on_button_2_pressed"]
-[connection signal="pressed" from="playerup/buttons/Button3" to="playerup/buttons" method="_on_button_3_pressed"]
-[connection signal="pressed" from="playerup/buttons/Button4" to="playerup/buttons" method="_on_button_4_pressed"]
-[connection signal="pressed" from="playerup/buttons/Button5" to="playerup/buttons" method="_on_button_5_pressed"]
-[connection signal="pressed" from="playerup/buttons/Button6" to="playerup/buttons" method="_on_button_6_pressed"]
+[node name="StageIndicator" type="RichTextLabel" parent="."]
+offset_left = 380.0
+offset_top = 580.0
+offset_right = 420.0
+offset_bottom = 620.0
+text = "I"
+
+[connection signal="pressed" from="Playerup/Buttons/Button1" to="Playerup/Buttons" method="_on_button_1_pressed"]
+[connection signal="pressed" from="Playerup/Buttons/Button2" to="Playerup/Buttons" method="_on_button_2_pressed"]
+[connection signal="pressed" from="Playerup/Buttons/Button3" to="Playerup/Buttons" method="_on_button_3_pressed"]
+[connection signal="pressed" from="Playerup/Buttons/Button4" to="Playerup/Buttons" method="_on_button_4_pressed"]
+[connection signal="pressed" from="Playerup/Buttons/Button5" to="Playerup/Buttons" method="_on_button_5_pressed"]
+[connection signal="pressed" from="Playerup/Buttons/Button6" to="Playerup/Buttons" method="_on_button_6_pressed"]
