@@ -26,7 +26,7 @@ func _ready():
 
 func _process(delta):
 	updateButtons()
-	updateScore()
+	
 
 
 func updateButtons():
@@ -50,3 +50,7 @@ func updateScore():
 
 func giveScore(amount: int):
 	score += amount
+
+
+func activate():
+	buttonController.activate()

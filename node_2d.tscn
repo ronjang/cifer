@@ -64,6 +64,7 @@ rotation = -3.14159
 text = "Score:"
 
 [node name="Playerdown" type="Node2D" parent="."]
+script = ExtResource("2_i13g4")
 
 [node name="buttons" type="Node2D" parent="Playerdown"]
 
