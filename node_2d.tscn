@@ -62,46 +62,61 @@ offset_top = 216.0
 offset_right = 768.0
 offset_bottom = 344.0
 
+[node name="turnIndicator" type="RichTextLabel" parent="Playerup"]
+offset_left = 76.0
+offset_top = 370.0
+offset_right = 192.0
+offset_bottom = 410.0
+text = "inTurn"
+
 [node name="Playerdown" type="Node2D" parent="."]
 script = ExtResource("2_i13g4")
 
-[node name="buttons" type="Node2D" parent="Playerdown"]
+[node name="Buttons" type="Node2D" parent="Playerdown"]
+script = ExtResource("3_4fday")
 
-[node name="Button1" type="Button" parent="Playerdown/buttons"]
+[node name="Button1" type="Button" parent="Playerdown/Buttons"]
 offset_left = 64.0
 offset_top = 832.0
 offset_right = 256.0
 offset_bottom = 960.0
 
-[node name="Button2" type="Button" parent="Playerdown/buttons"]
+[node name="Button2" type="Button" parent="Playerdown/Buttons"]
 offset_left = 320.0
 offset_top = 832.0
 offset_right = 512.0
 offset_bottom = 960.0
 
-[node name="Button3" type="Button" parent="Playerdown/buttons"]
+[node name="Button3" type="Button" parent="Playerdown/Buttons"]
 offset_left = 576.0
 offset_top = 832.0
 offset_right = 768.0
 offset_bottom = 960.0
 
-[node name="Button5" type="Button" parent="Playerdown/buttons"]
-offset_left = 320.0
-offset_top = 1024.0
-offset_right = 512.0
-offset_bottom = 1152.0
-
-[node name="Button4" type="Button" parent="Playerdown/buttons"]
+[node name="Button4" type="Button" parent="Playerdown/Buttons"]
 offset_left = 64.0
 offset_top = 1024.0
 offset_right = 256.0
 offset_bottom = 1152.0
 
-[node name="Button6" type="Button" parent="Playerdown/buttons"]
+[node name="Button5" type="Button" parent="Playerdown/Buttons"]
+offset_left = 320.0
+offset_top = 1024.0
+offset_right = 512.0
+offset_bottom = 1152.0
+
+[node name="Button6" type="Button" parent="Playerdown/Buttons"]
 offset_left = 576.0
 offset_top = 1024.0
 offset_right = 768.0
 offset_bottom = 1152.0
+
+[node name="turnIndicator" type="RichTextLabel" parent="Playerdown"]
+offset_left = 577.0
+offset_top = 766.0
+offset_right = 693.0
+offset_bottom = 806.0
+text = "inTurn"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
@@ -118,3 +133,9 @@ text = "I"
 [connection signal="pressed" from="Playerup/Buttons/Button4" to="Playerup/Buttons" method="_on_button_4_pressed"]
 [connection signal="pressed" from="Playerup/Buttons/Button5" to="Playerup/Buttons" method="_on_button_5_pressed"]
 [connection signal="pressed" from="Playerup/Buttons/Button6" to="Playerup/Buttons" method="_on_button_6_pressed"]
+[connection signal="pressed" from="Playerdown/Buttons/Button1" to="Playerdown/Buttons" method="_on_button_1_pressed"]
+[connection signal="pressed" from="Playerdown/Buttons/Button2" to="Playerdown/Buttons" method="_on_button_2_pressed"]
+[connection signal="pressed" from="Playerdown/Buttons/Button3" to="Playerdown/Buttons" method="_on_button_3_pressed"]
+[connection signal="pressed" from="Playerdown/Buttons/Button4" to="Playerdown/Buttons" method="_on_button_4_pressed"]
+[connection signal="pressed" from="Playerdown/Buttons/Button5" to="Playerdown/Buttons" method="_on_button_5_pressed"]
+[connection signal="pressed" from="Playerdown/Buttons/Button6" to="Playerdown/Buttons" method="_on_button_6_pressed"]

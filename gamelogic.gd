@@ -6,6 +6,7 @@ var currentCooldown
 var currentAmountOfTaps
 var whoIsInTurn
 var score : int = 0
+var actualButtons = []
 
 
 
@@ -16,12 +17,13 @@ var score : int = 0
 
 func _ready():
 	setStage(1)
-
+	$Playerup.connect("Player_1_done_setting", changeTurns)
+	$Playerup.isInTurn = true
+	$Playerdown.isInTurn = false
 
 func _process(delta):
-	controlTurns()
+	checkWhoIsInTurn()
 	updateScore()
-
 
 func setStage(stage: int):
 	stageIndicator.clear()
@@ -57,15 +59,13 @@ func setStage(stage: int):
 			currentMultiplier = 2.5
 			currentAmountOfTaps = 10
 
-
-func controlTurns():
+func checkWhoIsInTurn():
 	if $Playerup.isInTurn == true:
-		whoIsInTurn == $Playerup
-		print("Playerup playing")
+		whoIsInTurn = '$Playerup'
 	if $Playerdown.isInTurn == true:
-		whoIsInTurn == $Playerdown
-	if $Playerup.isInTurn && $Playerdown.isInTurn != true:
-		whoIsInTurn = null
+		whoIsInTurn = '$Playerdown'
+	if $Playerdown.isInTurn && $Playerup.isInTurn == false:
+		whoIsInTurn == null
 	if whoIsInTurn != null:
 		match whoIsInTurn:
 			'$Playerup':
@@ -79,3 +79,28 @@ func updateScore():
 
 func giveScore(amount: int):
 	score += amount
+
+func checkIfButtonsWereCorrect(tapped, actual) -> bool:
+	if tapped == actual:
+		return true
+	else:
+		return false
+
+func setCorrectButtons():
+	if whoIsInTurn != null:
+		match whoIsInTurn:
+			'$Playerup':
+				actualButtons = $Playerup.tappedButtons.duplicate()
+			'$Playerdown':
+				actualButtons = $Playerdown.tappedButtons
+
+func changeTurns():
+	setCorrectButtons()
+	if whoIsInTurn != null:
+		match whoIsInTurn:
+			'$Playerup':
+				$Playerup.isInTurn = false
+				$Playerdown.isInTurn = true
+			'$Playerdown':
+				$Playerup.isInTurn = true
+				$Playerdown.isInTurn = false

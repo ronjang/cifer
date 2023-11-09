@@ -11,8 +11,8 @@ var canTap : bool = true
 var tapCooldown : float = 0.5
 
 var tappedButtons = []
-var tries = 0
-
+var missclicks = 0
+signal Player_1_done_setting
 
 
 
@@ -30,22 +30,21 @@ func _process(delta):
 func updateButtons():
 	if isInTurn == true:
 		if tappedButtons.size() <= amountOfTaps:
-				isInTurn = true
 				if canTap == true:
 					buttonController.activate()
+					$turnIndicator.text = "inTurn"
+	else:
+		$turnIndicator.text = "NOT inTurn"
 	if tappedButtons.size() == amountOfTaps+1:
+		emit_signal("Player_1_done_setting")
 		tappedButtons.clear()
 		isInTurn = false
 		canTap = false
-		tries += 1 
+		missclicks += 1 
 		buttonController.deactivate()
-
-
-
-
-
-
-
 
 func activate():
 	buttonController.activate()
+
+
+
