@@ -11,22 +11,21 @@ var actualButtons = []
 
 
 @onready var scoreNode = $Score
-@onready var players = [$Playerup,$Playerdown]
 @onready var stageIndicator = $StageIndicator
 
 
 func _ready():
 	setStage(1)
-	$Playerup.connect("Player_1_done_setting", changeTurns)
-	$Playerup.isInTurn = true
-	$Playerdown.isInTurn = false
+	changeTurns(1)
 
 func _process(delta):
-	checkWhoIsInTurn()
+	print($Playerdown.tappedButtons)
+	controlTurns()
 	updateScore()
 
 func setStage(stage: int):
 	stageIndicator.clear()
+	currentStage = stage
 	match stage:
 		1:
 			stageIndicator.add_text("1")
@@ -59,19 +58,12 @@ func setStage(stage: int):
 			currentMultiplier = 2.5
 			currentAmountOfTaps = 10
 
-func checkWhoIsInTurn():
-	if $Playerup.isInTurn == true:
-		whoIsInTurn = '$Playerup'
-	if $Playerdown.isInTurn == true:
-		whoIsInTurn = '$Playerdown'
+func controlTurns():
 	if $Playerdown.isInTurn && $Playerup.isInTurn == false:
 		whoIsInTurn == null
-	if whoIsInTurn != null:
-		match whoIsInTurn:
-			'$Playerup':
-				$Playerup.activate()
-			'$Playerdown':
-				$Playerdown.activate()
+		$Playerdown.deactivate()
+		$Playerup.deactivate()
+		return null
 
 func updateScore():
 	scoreNode.clear()
@@ -92,15 +84,35 @@ func setCorrectButtons():
 			'$Playerup':
 				actualButtons = $Playerup.tappedButtons.duplicate()
 			'$Playerdown':
-				actualButtons = $Playerdown.tappedButtons
+				actualButtons = $Playerdown.tappedButtons.duplicate()
 
-func changeTurns():
+func changeTurns(player:int):
+	print("changed turns")
+	match player:
+		1:
+			whoIsInTurn = '$Playerup'
+			$Playerup.isInTurn = true
+			$Playerdown.isInTurn = false
+			$Playerup.canTap = true
+			$Playerdown.canTap = false
+			$Playerdown.deactivate()
+			$Playerup.activate()
+		2:
+			whoIsInTurn = '$Playerdown'
+			$Playerup.isInTurn = false
+			$Playerdown.isInTurn = true
+			$Playerup.canTap = false
+			$Playerdown.canTap = true
+			$Playerdown.activate()
+			$Playerup.deactivate()
+		3:
+			whoIsInTurn == null
 	setCorrectButtons()
-	if whoIsInTurn != null:
-		match whoIsInTurn:
-			'$Playerup':
-				$Playerup.isInTurn = false
-				$Playerdown.isInTurn = true
-			'$Playerdown':
-				$Playerup.isInTurn = true
-				$Playerdown.isInTurn = false
+
+
+func _on_playerup_player_1_done_setting():
+	changeTurns(2)
+
+
+func _on_playerdown_player_2_done_setting():
+	changeTurns(1)

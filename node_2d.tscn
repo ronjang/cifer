@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://g5wpd4brrgh1"]
+[gd_scene load_steps=6 format=3 uid="uid://g5wpd4brrgh1"]
 
 [ext_resource type="Texture2D" uid="uid://cgtfmqof3pkc8" path="res://background.png" id="1_oy4gk"]
 [ext_resource type="Script" path="res://gamelogic.gd" id="1_pdeob"]
 [ext_resource type="Script" path="res://player.gd" id="2_i13g4"]
 [ext_resource type="Script" path="res://buttons.gd" id="3_4fday"]
+[ext_resource type="Script" path="res://player2.gd" id="5_8aitr"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_pdeob")
@@ -70,42 +71,42 @@ offset_bottom = 410.0
 text = "inTurn"
 
 [node name="Playerdown" type="Node2D" parent="."]
-script = ExtResource("2_i13g4")
+script = ExtResource("5_8aitr")
 
 [node name="Buttons" type="Node2D" parent="Playerdown"]
 script = ExtResource("3_4fday")
 
-[node name="Button1" type="Button" parent="Playerdown/Buttons"]
+[node name="Button7" type="Button" parent="Playerdown/Buttons"]
 offset_left = 64.0
 offset_top = 832.0
 offset_right = 256.0
 offset_bottom = 960.0
 
-[node name="Button2" type="Button" parent="Playerdown/Buttons"]
+[node name="Button8" type="Button" parent="Playerdown/Buttons"]
 offset_left = 320.0
 offset_top = 832.0
 offset_right = 512.0
 offset_bottom = 960.0
 
-[node name="Button3" type="Button" parent="Playerdown/Buttons"]
+[node name="Button9" type="Button" parent="Playerdown/Buttons"]
 offset_left = 576.0
 offset_top = 832.0
 offset_right = 768.0
 offset_bottom = 960.0
 
-[node name="Button4" type="Button" parent="Playerdown/Buttons"]
+[node name="Button10" type="Button" parent="Playerdown/Buttons"]
 offset_left = 64.0
 offset_top = 1024.0
 offset_right = 256.0
 offset_bottom = 1152.0
 
-[node name="Button5" type="Button" parent="Playerdown/Buttons"]
+[node name="Button11" type="Button" parent="Playerdown/Buttons"]
 offset_left = 320.0
 offset_top = 1024.0
 offset_right = 512.0
 offset_bottom = 1152.0
 
-[node name="Button6" type="Button" parent="Playerdown/Buttons"]
+[node name="Button12" type="Button" parent="Playerdown/Buttons"]
 offset_left = 576.0
 offset_top = 1024.0
 offset_right = 768.0
@@ -127,15 +128,11 @@ offset_right = 420.0
 offset_bottom = 620.0
 text = "I"
 
+[connection signal="Player_1_done_setting" from="Playerup" to="." method="_on_playerup_player_1_done_setting"]
 [connection signal="pressed" from="Playerup/Buttons/Button1" to="Playerup/Buttons" method="_on_button_1_pressed"]
 [connection signal="pressed" from="Playerup/Buttons/Button2" to="Playerup/Buttons" method="_on_button_2_pressed"]
 [connection signal="pressed" from="Playerup/Buttons/Button3" to="Playerup/Buttons" method="_on_button_3_pressed"]
 [connection signal="pressed" from="Playerup/Buttons/Button4" to="Playerup/Buttons" method="_on_button_4_pressed"]
 [connection signal="pressed" from="Playerup/Buttons/Button5" to="Playerup/Buttons" method="_on_button_5_pressed"]
 [connection signal="pressed" from="Playerup/Buttons/Button6" to="Playerup/Buttons" method="_on_button_6_pressed"]
-[connection signal="pressed" from="Playerdown/Buttons/Button1" to="Playerdown/Buttons" method="_on_button_1_pressed"]
-[connection signal="pressed" from="Playerdown/Buttons/Button2" to="Playerdown/Buttons" method="_on_button_2_pressed"]
-[connection signal="pressed" from="Playerdown/Buttons/Button3" to="Playerdown/Buttons" method="_on_button_3_pressed"]
-[connection signal="pressed" from="Playerdown/Buttons/Button4" to="Playerdown/Buttons" method="_on_button_4_pressed"]
-[connection signal="pressed" from="Playerdown/Buttons/Button5" to="Playerdown/Buttons" method="_on_button_5_pressed"]
-[connection signal="pressed" from="Playerdown/Buttons/Button6" to="Playerdown/Buttons" method="_on_button_6_pressed"]
+[connection signal="Player_2_done_setting" from="Playerdown" to="." method="_on_playerdown_player_2_done_setting"]

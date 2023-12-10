@@ -6,13 +6,13 @@ extends Node2D
 
 
 var isInTurn : bool = false
-var canTap : bool = true
+var canTap : bool
 
 var tapCooldown : float = 0.5
 
 var tappedButtons = []
 var missclicks = 0
-signal Player_1_done_setting
+signal Player_2_done_setting
 
 
 
@@ -36,7 +36,7 @@ func updateButtons():
 	else:
 		$turnIndicator.text = "NOT inTurn"
 	if tappedButtons.size() == amountOfTaps+1:
-		Player_1_done_setting.emit()
+		Player_2_done_setting.emit()
 		tappedButtons.clear()
 		isInTurn = false
 		canTap = false
