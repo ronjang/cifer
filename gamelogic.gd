@@ -19,7 +19,6 @@ func _ready():
 	changeTurns(1)
 
 func _process(delta):
-	print($Playerdown.tappedButtons)
 	controlTurns()
 	updateScore()
 
@@ -88,6 +87,7 @@ func setCorrectButtons():
 
 func changeTurns(player:int):
 	print("changed turns")
+	setCorrectButtons()
 	match player:
 		1:
 			whoIsInTurn = '$Playerup'
@@ -107,12 +107,14 @@ func changeTurns(player:int):
 			$Playerup.deactivate()
 		3:
 			whoIsInTurn == null
-	setCorrectButtons()
+	
 
 
-func _on_playerup_player_1_done_setting():
+
+
+func _on_playerup_player_done_setting():
 	changeTurns(2)
 
 
-func _on_playerdown_player_2_done_setting():
+func _on_playerdown_player_done_setting():
 	changeTurns(1)
