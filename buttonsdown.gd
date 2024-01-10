@@ -43,6 +43,7 @@ func activate():
 	button4.disabled = false
 	button5.disabled = false
 	button6.disabled = false
+	
 
 func deactivate():
 	button1.disabled = true
@@ -51,4 +52,3 @@ func deactivate():
 	button4.disabled = true
 	button5.disabled = true
 	button6.disabled = true
-	

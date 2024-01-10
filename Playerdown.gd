@@ -5,8 +5,11 @@ extends Node2D
 @export var amountOfTaps : int = 3
 
 
-var isInTurn : bool = false
-var canTap : bool = true
+var isInTurn : bool
+var isGuessing : bool
+var isSetting : bool
+var isWaiting : bool
+var canTap : bool
 
 var tapCooldown : float = 0.5
 
@@ -25,22 +28,24 @@ func _ready():
 
 func _process(delta):
 	updateButtons()
+	updateTurnIndicator()
 
 
 func updateButtons():
-	if isInTurn == true:
-		if tappedButtons.size() <= amountOfTaps:
-				if canTap == true:
-					$turnIndicator.text = "inTurn"
-					activate()
-	else:
-		$turnIndicator.text = "NOT inTurn"
-	if tappedButtons.size() == amountOfTaps+1:
+	if tappedButtons.size() <= amountOfTaps:
+			if canTap == true:
+				$TurnIndicator.text = "inTurn"
+	if tappedButtons.size() == amountOfTaps:
 		Player_done_setting.emit()
 		tappedButtons.clear()
-		isInTurn = false
 		canTap = false
-		deactivate()
+
+func updateTurnIndicator():
+	if isInTurn == true:
+		$TurnIndicator.text = "inTurn"
+	else:
+		if isInTurn == false:
+			$TurnIndicator.text = "NOT inTurn"
 
 func activate():
 	buttonController.activate()
