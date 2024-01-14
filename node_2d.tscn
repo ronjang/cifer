@@ -1,13 +1,15 @@
 [gd_scene load_steps=7 format=3 uid="uid://g5wpd4brrgh1"]
 
-[ext_resource type="Texture2D" uid="uid://cgtfmqof3pkc8" path="res://background.png" id="1_oy4gk"]
+[ext_resource type="Texture2D" uid="uid://bjtf7nmubo6d4" path="res://background.png" id="1_oy4gk"]
 [ext_resource type="Script" path="res://Main.gd" id="1_rck4g"]
 [ext_resource type="Script" path="res://Playerup.gd" id="3_cis15"]
 [ext_resource type="Script" path="res://Buttonsup.gd" id="4_82vww"]
 [ext_resource type="Script" path="res://Playerdown.gd" id="5_0wgre"]
 [ext_resource type="Script" path="res://Buttonsdown.gd" id="6_y0gf3"]
 
-[node name="World" type="Node2D"]
+[node name="World" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_rck4g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -117,6 +119,7 @@ text = "inTurn"
 
 [node name="Score" type="RichTextLabel" parent="."]
 clip_contents = false
+layout_mode = 0
 offset_left = 380.0
 offset_top = 524.0
 offset_right = 604.0
@@ -125,6 +128,7 @@ text = "0
 "
 
 [node name="StageIndicator" type="RichTextLabel" parent="."]
+layout_mode = 0
 offset_left = 380.0
 offset_top = 580.0
 offset_right = 420.0
