@@ -11,3 +11,4 @@ documented and needs to be worked on
 +fix whoIsInTurn variables
 fix turn changing too soon (before blue can guess)
 add cooldown to button presses
+hook up draw logic to endscreen
