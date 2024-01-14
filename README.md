@@ -1,6 +1,6 @@
 # cifer
 
-find it on [itch.io](https://astronald.itch.io/cifer)
+play on [itch.io](https://astronald.itch.io/cifer)
 
 
 details:
