@@ -1,6 +1,6 @@
-#cifer
+# cifer
 
-###find it on [itcho]([url](https://astronald.itch.io/cifer)https://astronald.itch.io/cifer)
+### find it on [itcho]([url](https://astronald.itch.io/cifer)https://astronald.itch.io/cifer)
 
 
 details:
