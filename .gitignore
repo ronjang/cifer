@@ -4,3 +4,6 @@
 .idea/tapgame.iml
 .idea/modules.xml
 .idea/misc.xml
+.mgd2_presi/
+.assets/*.ai
+.assets/*.gif

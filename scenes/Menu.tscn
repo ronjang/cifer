@@ -1,0 +1,150 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/cifer_menutext.png" type="Texture" id=1]
+[ext_resource path="res://scenes/CiferMenutext.gd" type="Script" id=2]
+[ext_resource path="res://assets/power-button.png" type="Texture" id=3]
+[ext_resource path="res://scenes/Menu.gd" type="Script" id=4]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.592157, 0.592157, 0.592157, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.698039, 0.34902, 0.34902, 1 )
+border_width_bottom = 5
+border_color = Color( 0.843137, 0.152941, 0.152941, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.419608, 0.47451, 0.835294, 1 )
+border_width_top = 5
+border_color = Color( 0.101961, 0.223529, 0.698039, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 40
+border_width_top = 40
+border_width_right = 40
+border_color = Color( 0.843137, 0.152941, 0.152941, 1 )
+corner_radius_top_left = 500
+corner_radius_top_right = 500
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 40
+border_width_right = 40
+border_width_bottom = 40
+border_color = Color( 0.101961, 0.223529, 0.698039, 1 )
+corner_radius_bottom_right = 500
+corner_radius_bottom_left = 500
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureButton:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.35, 0.35 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "buttonAnim"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureButton:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.35, 0.35 ), Vector2( 0.45, 0.45 ), Vector2( 0.35, 0.35 ) ]
+}
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+
+[node name="Background" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="Up" type="Panel" parent="Background"]
+anchor_right = 1.0
+anchor_bottom = 0.5
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Down" type="Panel" parent="Background"]
+anchor_top = 0.454237
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 54.0
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Panel" type="Panel" parent="Background"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -173.0
+margin_top = -173.0
+margin_right = 174.0
+margin_bottom = 1.0
+custom_styles/panel = SubResource( 4 )
+
+[node name="Panel2" type="Panel" parent="Background"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -173.0
+margin_right = 174.0
+margin_bottom = 174.0
+custom_styles/panel = SubResource( 5 )
+
+[node name="Control" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="CiferMenutext" type="Sprite" parent="Control"]
+scale = Vector2( 0.23, 0.23 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 6 )
+anims/buttonAnim = SubResource( 7 )
+
+[node name="TextureButton" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -256.0
+margin_top = -256.0
+margin_right = 256.0
+margin_bottom = 256.0
+rect_scale = Vector2( 0.35, 0.35 )
+rect_pivot_offset = Vector2( 256, 256 )
+texture_normal = ExtResource( 3 )
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]

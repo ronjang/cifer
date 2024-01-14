@@ -1,0 +1,987 @@
+[gd_scene load_steps=44 format=2]
+
+[ext_resource path="res://scripts/Playerdown.gd" type="Script" id=1]
+[ext_resource path="res://button_normal_green.tres" type="StyleBox" id=2]
+[ext_resource path="res://scripts/Playerup.gd" type="Script" id=3]
+[ext_resource path="res://scripts/Buttonsup.gd" type="Script" id=4]
+[ext_resource path="res://scripts/Main.gd" type="Script" id=5]
+[ext_resource path="res://button_normal_yellow.tres" type="StyleBox" id=6]
+[ext_resource path="res://button_normal_cyan.tres" type="StyleBox" id=7]
+[ext_resource path="res://button_normal_blue.tres" type="StyleBox" id=8]
+[ext_resource path="res://button_normal_magenta.tres" type="StyleBox" id=9]
+[ext_resource path="res://button_normal_red.tres" type="StyleBox" id=10]
+[ext_resource path="res://scripts/Buttonsdown.gd" type="Script" id=11]
+[ext_resource path="res://text_game.tres" type="DynamicFont" id=12]
+[ext_resource path="res://button_disabled_magenta.tres" type="StyleBox" id=13]
+[ext_resource path="res://button_disabled_cyan.tres" type="StyleBox" id=14]
+[ext_resource path="res://button_disabled_yellow.tres" type="StyleBox" id=15]
+[ext_resource path="res://button_disabled_blue.tres" type="StyleBox" id=16]
+[ext_resource path="res://button_disabled_green.tres" type="StyleBox" id=17]
+[ext_resource path="res://button_disabled_red.tres" type="StyleBox" id=18]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.592157, 0.592157, 0.592157, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.698039, 0.34902, 0.34902, 1 )
+border_width_bottom = 5
+border_color = Color( 0.843137, 0.152941, 0.152941, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.419608, 0.47451, 0.835294, 1 )
+border_width_top = 5
+border_color = Color( 0.101961, 0.223529, 0.698039, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.843137, 0.843137, 0.843137, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="Animation" id=22]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Overlay/OverlayUp:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Overlay/OverlayUp:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.431373, 0.431373, 0.431373, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Overlay/OverlayDown:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.0431373, 0.764706, 0.0196078, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Overlay/OverlayDown:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=25]
+resource_name = "correctDown"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Overlay/OverlayDown:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.0431373, 0.764706, 0.0196078, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Overlay/OverlayDown:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.443137 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=23]
+resource_name = "correctUp"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Overlay/OverlayUp:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.443137 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Overlay/OverlayUp:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.0431373, 0.764706, 0.0196078, 1 ) ]
+}
+
+[sub_resource type="Animation" id=26]
+resource_name = "wrongDown"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Overlay/OverlayDown:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.764706, 0.0196078, 0.0196078, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Overlay/OverlayDown:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.443137 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=24]
+resource_name = "wrongUp"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Overlay/OverlayUp:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.443137 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Overlay/OverlayUp:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.764706, 0.0196078, 0.0196078, 1 ) ]
+}
+
+[sub_resource type="DynamicFontData" id=27]
+font_path = "res://assets/PressStart2P-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=6]
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 27 )
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Playerup/Buttons/VBox1/Button1:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Playerup/Buttons/VBox1/Button2:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Playerup/Buttons/VBox1/Button3:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Playerup/Buttons/VBox2/Button4:rect_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.9, 0.9 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Playerup/Buttons/VBox2/Button5:rect_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Playerup/Buttons/VBox2/Button6:rect_scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "buttonTap1"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Playerup/Buttons/VBox1/Button1:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.9, 0.9 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "buttonTap2"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Playerup/Buttons/VBox1/Button2:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.9, 0.9 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "buttonTap3"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Playerup/Buttons/VBox1/Button3:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.9, 0.9 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "buttonTap4"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Playerup/Buttons/VBox2/Button4:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.9, 0.9 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "buttonTap5"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Playerup/Buttons/VBox2/Button5:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.9, 0.9 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "buttonTap6"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Playerup/Buttons/VBox2/Button6:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.9, 0.9 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Playerdown/Buttons/VBox1/Button1:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Playerdown/Buttons/VBox1/Button2:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Playerdown/Buttons/VBox1/Button3:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Playerdown/Buttons/VBox2/Button4:rect_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Playerdown/Buttons/VBox2/Button5:rect_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Playerdown/Buttons/VBox2/Button6:rect_scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "buttonTap1"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Playerdown/Buttons/VBox1/Button1:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.9, 0.9 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "buttonTap2"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Playerdown/Buttons/VBox1/Button2:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.9, 0.9 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=18]
+resource_name = "buttonTap3"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Playerdown/Buttons/VBox1/Button3:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.9, 0.9 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "buttonTap4"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Playerdown/Buttons/VBox2/Button4:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.9, 0.9 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "buttonTap5"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Playerdown/Buttons/VBox2/Button5:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.9, 0.9 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=21]
+resource_name = "buttonTap6"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Playerdown/Buttons/VBox2/Button6:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.9, 0.9 ), Vector2( 1, 1 ) ]
+}
+
+[node name="World" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+
+[node name="Background" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="Overlay" type="CanvasLayer" parent="Background"]
+
+[node name="OverlayUp" type="ColorRect" parent="Background/Overlay"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 0.5
+mouse_filter = 2
+color = Color( 0.431373, 0.431373, 0.431373, 1 )
+
+[node name="OverlayDown" type="ColorRect" parent="Background/Overlay"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = 590.0
+margin_bottom = 590.0
+mouse_filter = 2
+color = Color( 0.0431373, 0.764706, 0.0196078, 1 )
+
+[node name="Up" type="Panel" parent="Background"]
+anchor_right = 1.0
+anchor_bottom = 0.5
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Down" type="Panel" parent="Background"]
+anchor_top = 0.454237
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 54.0
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="ScoreUp" type="Panel" parent="Background"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 70.0
+margin_top = -25.0
+margin_right = 221.0
+margin_bottom = 25.0
+custom_styles/panel = SubResource( 4 )
+
+[node name="Score" type="RichTextLabel" parent="Background/ScoreUp"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 127.0
+margin_top = 11.0
+margin_right = 253.0
+margin_bottom = 38.0
+rect_rotation = 180.0
+rect_clip_content = false
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/normal_font = ExtResource( 12 )
+tab_size = 3
+text = "9999"
+scroll_active = false
+
+[node name="ScoreDown" type="Panel" parent="Background"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -218.0
+margin_top = -25.0
+margin_right = -67.0
+margin_bottom = 25.0
+custom_styles/panel = SubResource( 4 )
+
+[node name="Score" type="RichTextLabel" parent="Background/ScoreDown"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 27.0
+margin_top = -12.0
+margin_right = 153.0
+margin_bottom = 15.0
+rect_clip_content = false
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/normal_font = ExtResource( 12 )
+tab_size = 3
+text = "9999"
+scroll_active = false
+
+[node name="Stage" type="Panel" parent="Background"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -46.0
+margin_top = -25.0
+margin_right = 46.0
+margin_bottom = 25.0
+custom_styles/panel = SubResource( 4 )
+
+[node name="StageIndicator" type="RichTextLabel" parent="Background/Stage"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -37.0
+margin_top = -11.0
+margin_right = 56.0
+margin_bottom = 19.0
+rect_clip_content = false
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = ExtResource( 12 )
+text = "III"
+scroll_active = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background"]
+anims/RESET = SubResource( 22 )
+anims/correctDown = SubResource( 25 )
+anims/correctUp = SubResource( 23 )
+anims/wrongDown = SubResource( 26 )
+anims/wrongUp = SubResource( 24 )
+
+[node name="Playerup" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.5
+script = ExtResource( 3 )
+
+[node name="TurnIndicator" type="Label" parent="Playerup"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -36.0
+margin_top = -25.0
+margin_right = 173.0
+margin_bottom = 15.0
+rect_rotation = 180.0
+custom_fonts/font = SubResource( 6 )
+text = "inTurn"
+
+[node name="Buttons" type="VBoxContainer" parent="Playerup"]
+anchor_left = 0.0658537
+anchor_top = 0.0745763
+anchor_right = 0.936585
+anchor_bottom = 0.908475
+margin_left = -3.8147e-05
+margin_top = -12.0
+margin_right = -6.10352e-05
+margin_bottom = -12.0001
+script = ExtResource( 4 )
+
+[node name="VBox1" type="HBoxContainer" parent="Playerup/Buttons"]
+margin_right = 713.0
+margin_bottom = 244.0
+size_flags_vertical = 3
+
+[node name="Button1" type="Button" parent="Playerup/Buttons/VBox1"]
+margin_right = 235.0
+margin_bottom = 244.0
+rect_pivot_offset = Vector2( 117, 122 )
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = ExtResource( 9 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = ExtResource( 9 )
+custom_styles/disabled = ExtResource( 13 )
+custom_styles/normal = ExtResource( 9 )
+enabled_focus_mode = 0
+
+[node name="Button2" type="Button" parent="Playerup/Buttons/VBox1"]
+margin_left = 239.0
+margin_right = 474.0
+margin_bottom = 244.0
+rect_pivot_offset = Vector2( 117, 122 )
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = ExtResource( 8 )
+custom_styles/pressed = ExtResource( 8 )
+custom_styles/focus = ExtResource( 8 )
+custom_styles/disabled = ExtResource( 16 )
+custom_styles/normal = ExtResource( 8 )
+enabled_focus_mode = 0
+
+[node name="Button3" type="Button" parent="Playerup/Buttons/VBox1"]
+margin_left = 478.0
+margin_right = 713.0
+margin_bottom = 244.0
+rect_pivot_offset = Vector2( 117, 122 )
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 2 )
+custom_styles/focus = ExtResource( 2 )
+custom_styles/disabled = ExtResource( 17 )
+custom_styles/normal = ExtResource( 2 )
+enabled_focus_mode = 0
+
+[node name="VBox2" type="HBoxContainer" parent="Playerup/Buttons"]
+margin_top = 248.0
+margin_right = 713.0
+margin_bottom = 492.0
+size_flags_vertical = 3
+
+[node name="Button4" type="Button" parent="Playerup/Buttons/VBox2"]
+margin_right = 235.0
+margin_bottom = 244.0
+rect_scale = Vector2( 0.9, 0.9 )
+rect_pivot_offset = Vector2( 117, 122 )
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = ExtResource( 10 )
+custom_styles/pressed = ExtResource( 10 )
+custom_styles/focus = ExtResource( 10 )
+custom_styles/disabled = ExtResource( 18 )
+custom_styles/normal = ExtResource( 10 )
+enabled_focus_mode = 0
+
+[node name="Button5" type="Button" parent="Playerup/Buttons/VBox2"]
+margin_left = 239.0
+margin_right = 474.0
+margin_bottom = 244.0
+rect_pivot_offset = Vector2( 117, 122 )
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = ExtResource( 6 )
+custom_styles/pressed = ExtResource( 6 )
+custom_styles/focus = ExtResource( 6 )
+custom_styles/disabled = ExtResource( 15 )
+custom_styles/normal = ExtResource( 6 )
+enabled_focus_mode = 0
+
+[node name="Button6" type="Button" parent="Playerup/Buttons/VBox2"]
+margin_left = 478.0
+margin_right = 713.0
+margin_bottom = 244.0
+rect_pivot_offset = Vector2( 117, 122 )
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/disabled = ExtResource( 14 )
+custom_styles/normal = ExtResource( 7 )
+enabled_focus_mode = 0
+keep_pressed_outside = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Playerup/Buttons"]
+root_node = NodePath("../../..")
+anims/RESET = SubResource( 8 )
+anims/buttonTap1 = SubResource( 9 )
+anims/buttonTap2 = SubResource( 10 )
+anims/buttonTap3 = SubResource( 14 )
+anims/buttonTap4 = SubResource( 15 )
+anims/buttonTap5 = SubResource( 16 )
+anims/buttonTap6 = SubResource( 17 )
+
+[node name="Playerdown" type="Control" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="TurnIndicator" type="Label" parent="Playerdown"]
+margin_left = 32.0
+margin_top = 26.0
+margin_right = 632.0
+margin_bottom = 270.0
+custom_fonts/font = SubResource( 6 )
+text = "inTurn"
+
+[node name="Buttons" type="VBoxContainer" parent="Playerdown"]
+anchor_left = 0.0658537
+anchor_top = 0.0745763
+anchor_right = 0.936585
+anchor_bottom = 0.908475
+margin_top = 22.0
+margin_bottom = 22.0
+script = ExtResource( 11 )
+
+[node name="VBox1" type="HBoxContainer" parent="Playerdown/Buttons"]
+margin_right = 713.0
+margin_bottom = 244.0
+size_flags_vertical = 3
+
+[node name="Button1" type="Button" parent="Playerdown/Buttons/VBox1"]
+margin_right = 235.0
+margin_bottom = 244.0
+rect_pivot_offset = Vector2( 117, 122 )
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = ExtResource( 9 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = ExtResource( 9 )
+custom_styles/disabled = ExtResource( 13 )
+custom_styles/normal = ExtResource( 9 )
+enabled_focus_mode = 0
+
+[node name="Button2" type="Button" parent="Playerdown/Buttons/VBox1"]
+margin_left = 239.0
+margin_right = 474.0
+margin_bottom = 244.0
+rect_pivot_offset = Vector2( 117, 122 )
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = ExtResource( 8 )
+custom_styles/pressed = ExtResource( 8 )
+custom_styles/focus = ExtResource( 8 )
+custom_styles/disabled = ExtResource( 16 )
+custom_styles/normal = ExtResource( 8 )
+enabled_focus_mode = 0
+
+[node name="Button3" type="Button" parent="Playerdown/Buttons/VBox1"]
+margin_left = 478.0
+margin_right = 713.0
+margin_bottom = 244.0
+rect_pivot_offset = Vector2( 117, 122 )
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 2 )
+custom_styles/focus = ExtResource( 2 )
+custom_styles/disabled = ExtResource( 17 )
+custom_styles/normal = ExtResource( 2 )
+enabled_focus_mode = 0
+
+[node name="VBox2" type="HBoxContainer" parent="Playerdown/Buttons"]
+margin_top = 248.0
+margin_right = 713.0
+margin_bottom = 492.0
+size_flags_vertical = 3
+
+[node name="Button4" type="Button" parent="Playerdown/Buttons/VBox2"]
+margin_right = 235.0
+margin_bottom = 244.0
+rect_pivot_offset = Vector2( 117, 122 )
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = ExtResource( 10 )
+custom_styles/pressed = ExtResource( 10 )
+custom_styles/focus = ExtResource( 10 )
+custom_styles/disabled = ExtResource( 18 )
+custom_styles/normal = ExtResource( 10 )
+enabled_focus_mode = 0
+
+[node name="Button5" type="Button" parent="Playerdown/Buttons/VBox2"]
+margin_left = 239.0
+margin_right = 474.0
+margin_bottom = 244.0
+rect_pivot_offset = Vector2( 117, 122 )
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = ExtResource( 6 )
+custom_styles/pressed = ExtResource( 6 )
+custom_styles/focus = ExtResource( 6 )
+custom_styles/disabled = ExtResource( 15 )
+custom_styles/normal = ExtResource( 6 )
+enabled_focus_mode = 0
+
+[node name="Button6" type="Button" parent="Playerdown/Buttons/VBox2"]
+margin_left = 478.0
+margin_right = 713.0
+margin_bottom = 244.0
+rect_pivot_offset = Vector2( 117, 122 )
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/disabled = ExtResource( 14 )
+custom_styles/normal = ExtResource( 7 )
+enabled_focus_mode = 0
+keep_pressed_outside = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Playerdown/Buttons"]
+root_node = NodePath("../../..")
+anims/RESET = SubResource( 11 )
+anims/buttonTap1 = SubResource( 12 )
+anims/buttonTap2 = SubResource( 13 )
+anims/buttonTap3 = SubResource( 18 )
+anims/buttonTap4 = SubResource( 19 )
+anims/buttonTap5 = SubResource( 20 )
+anims/buttonTap6 = SubResource( 21 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="Player_done_Typing" from="Playerup" to="." method="_on_Playerup_Player_done_Typing"]
+[connection signal="pressed" from="Playerup/Buttons/VBox1/Button1" to="Playerup/Buttons" method="_on_Button1_pressed"]
+[connection signal="pressed" from="Playerup/Buttons/VBox1/Button2" to="Playerup/Buttons" method="_on_Button2_pressed"]
+[connection signal="pressed" from="Playerup/Buttons/VBox1/Button3" to="Playerup/Buttons" method="_on_Button3_pressed"]
+[connection signal="pressed" from="Playerup/Buttons/VBox2/Button4" to="Playerup/Buttons" method="_on_Button4_pressed"]
+[connection signal="pressed" from="Playerup/Buttons/VBox2/Button5" to="Playerup/Buttons" method="_on_Button5_pressed"]
+[connection signal="pressed" from="Playerup/Buttons/VBox2/Button6" to="Playerup/Buttons" method="_on_Button6_pressed"]
+[connection signal="Player_done_Typing" from="Playerdown" to="." method="_on_Playerdown_Player_done_Typing"]
+[connection signal="pressed" from="Playerdown/Buttons/VBox1/Button1" to="Playerdown/Buttons" method="_on_Button1_pressed"]
+[connection signal="pressed" from="Playerdown/Buttons/VBox1/Button2" to="Playerdown/Buttons" method="_on_Button2_pressed"]
+[connection signal="pressed" from="Playerdown/Buttons/VBox1/Button3" to="Playerdown/Buttons" method="_on_Button3_pressed"]
+[connection signal="pressed" from="Playerdown/Buttons/VBox2/Button4" to="Playerdown/Buttons" method="_on_Button4_pressed"]
+[connection signal="pressed" from="Playerdown/Buttons/VBox2/Button5" to="Playerdown/Buttons" method="_on_Button5_pressed"]
+[connection signal="pressed" from="Playerdown/Buttons/VBox2/Button6" to="Playerdown/Buttons" method="_on_Button6_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
