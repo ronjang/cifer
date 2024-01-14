@@ -10,3 +10,4 @@ documented and needs to be worked on
 +implement game state variable
 +fix whoIsInTurn variables
 fix turn changing too soon (before blue can guess)
+add cooldown to button presses
