@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://scripts/Playerdown.gd" type="Script" id=1]
 [ext_resource path="res://button_normal_green.tres" type="StyleBox" id=2]
@@ -18,6 +18,12 @@
 [ext_resource path="res://button_disabled_blue.tres" type="StyleBox" id=16]
 [ext_resource path="res://button_disabled_green.tres" type="StyleBox" id=17]
 [ext_resource path="res://button_disabled_red.tres" type="StyleBox" id=18]
+[ext_resource path="res://assets/sounds/button4.mp3" type="AudioStream" id=19]
+[ext_resource path="res://assets/sounds/button6.mp3" type="AudioStream" id=20]
+[ext_resource path="res://assets/sounds/button5.mp3" type="AudioStream" id=21]
+[ext_resource path="res://assets/sounds/button3.mp3" type="AudioStream" id=22]
+[ext_resource path="res://assets/sounds/button2.mp3" type="AudioStream" id=23]
+[ext_resource path="res://assets/sounds/button1.mp3" type="AudioStream" id=24]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.592157, 0.592157, 0.592157, 1 )
@@ -777,6 +783,7 @@ size_flags_vertical = 3
 [node name="Button4" type="Button" parent="Playerup/Buttons/VBox2"]
 margin_right = 235.0
 margin_bottom = 244.0
+rect_scale = Vector2( 0.9, 0.9 )
 rect_pivot_offset = Vector2( 117, 122 )
 focus_mode = 0
 size_flags_horizontal = 3
@@ -968,6 +975,32 @@ anims/buttonTap6 = SubResource( 21 )
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="Button1" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 24 )
+volume_db = -5.243
+
+[node name="Button2" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 23 )
+volume_db = -5.243
+
+[node name="Button3" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 22 )
+volume_db = -5.243
+
+[node name="Button4" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 19 )
+volume_db = -5.243
+
+[node name="Button5" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 21 )
+volume_db = -5.243
+
+[node name="Button6" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 20 )
+volume_db = -5.243
 
 [connection signal="Player_done_Typing" from="Playerup" to="." method="_on_Playerup_Player_done_Typing"]
 [connection signal="pressed" from="Playerup/Buttons/VBox1/Button1" to="Playerup/Buttons" method="_on_Button1_pressed"]
