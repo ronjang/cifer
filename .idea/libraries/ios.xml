@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="ios">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/ios/ios.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

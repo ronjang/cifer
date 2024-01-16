@@ -14,10 +14,15 @@ config/name="Tapgame 3 . 5"
 run/main_scene="res://scenes/Menu.tscn"
 config/icon="res://assets/icon.png"
 
+[audio]
+
+driver=""
+
 [autoload]
 
 SceneTransition="*res://scenes/scene_transition.tscn"
 GlobalVars="*res://global_vars.gd"
+BackgroundMusic="*res://scenes/background_music.tscn"
 
 [display]
 
@@ -28,6 +33,7 @@ window/size/height=1180
 
 editor=false
 type=false
+audio=false
 
 [gui]
 

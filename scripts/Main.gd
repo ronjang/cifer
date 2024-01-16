@@ -22,6 +22,7 @@ onready var animationPlayer = get_node("Background/AnimationPlayer")
 
 
 func _ready():
+	BackgroundMusic.volume_db = -999
 	setStage(1)
 	changeTurns(1)
 	$Playerup.isGuessing = false
@@ -91,6 +92,8 @@ func updateStage():
 		endGame()
 	if turnsTaken > 0 and turnsTaken % 2 == 0:
 		setStage(currentStage+1)
+	$Playerdown.amountOfTaps = currentAmountOfTaps
+	$Playerup.amountOfTaps = currentAmountOfTaps
 
 func giveScore(amount: int):
 	match whoIsInTurn:
@@ -119,18 +122,19 @@ func checkIfButtonsWereCorrect(tapped, actual) -> bool:
 		return false
 
 func handlePlayer():
-	print(correctButtons)
 	match whoIsInTurn:
 		'$Playerup':
 			if $Playerup.isGuessing == true:
 				checkIfButtonsWereCorrect($Playerup.lastTappedButtons, correctButtons)
 				$Playerup.isGuessing = false
 				$Playerup.isTyping = true
+				updateStage()
 			elif $Playerup.isTyping == true:
 				setCorrectButtons()
 				$Playerup.isTyping = false
 				$Playerup.isWaiting = true
 				changeTurns(2)
+				
 			elif $Playerup.isWaiting == true:
 				return ERR_BUG
 		'$Playerdown':
@@ -138,15 +142,19 @@ func handlePlayer():
 				checkIfButtonsWereCorrect($Playerdown.lastTappedButtons, correctButtons)
 				$Playerdown.isGuessing = false
 				$Playerdown.isTyping = true
+				updateStage()
 			elif $Playerdown.isTyping == true:
 				setCorrectButtons()
 				$Playerdown.isTyping = false
 				$Playerdown.isWaiting = true
 				changeTurns(1)
+				
 			elif $Playerdown.isWaiting == true:
 				return ERR_BUG
+	print(correctButtons)
 
 func setCorrectButtons():
+	print("set buttons")
 	if whoIsInTurn != null:
 		match whoIsInTurn:
 			'$Playerup':
@@ -155,12 +163,10 @@ func setCorrectButtons():
 				correctButtons = $Playerdown.lastTappedButtons.duplicate()
 
 func changeTurns(player:int):
-	updateStage()
 	turnsTaken += 1
 	match player:
 		1:
 			whoIsInTurn = '$Playerup'
-			$Playerup.amountOfTaps = currentAmountOfTaps
 			$Playerup.isGuessing = true
 			$Playerup.canTap = true
 			$Playerdown.canTap = false
@@ -169,7 +175,6 @@ func changeTurns(player:int):
 			$Playerup.activate()
 		2:
 			whoIsInTurn = '$Playerdown'
-			$Playerdown.amountOfTaps = currentAmountOfTaps
 			$Playerup.canTap = false
 			$Playerdown.isGuessing = true
 			$Playerdown.canTap = true
@@ -209,4 +214,5 @@ func _on_Playerdown_Player_done_Typing() -> void:
 	handlePlayer()
 
 func _on_Timer_timeout() -> void:
+	BackgroundMusic.volume_db = -13
 	SceneTransition.change_scene("res://scenes/End.tscn")

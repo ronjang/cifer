@@ -26,7 +26,8 @@ func deactivate():
 	button4.disabled = true
 	button5.disabled = true
 	button6.disabled = true
-	
+
+
 
 
 
@@ -34,6 +35,7 @@ func deactivate():
 func _on_Button1_pressed():
 	ownButtons.append(1)
 	animationPlayer.play("buttonTap1")
+	yield(animationPlayer, "animation_finished")
 
 
 func _on_Button2_pressed():
@@ -59,3 +61,7 @@ func _on_Button5_pressed():
 func _on_Button6_pressed():
 	ownButtons.append(6)
 	animationPlayer.play("buttonTap6")
+
+
+func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
+	pass # Replace with function body.
